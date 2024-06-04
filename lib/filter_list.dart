@@ -81,8 +81,7 @@ class _filterlistState extends State<filterlist> {
                 title: Text(items[index]),
               );
             } else {
-              return Container(
-              );
+              return Container();
             }
           }),
     );
