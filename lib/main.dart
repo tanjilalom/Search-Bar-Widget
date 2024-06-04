@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:search_bar/HomePage.dart';
-import 'package:search_bar/filter_from_the_list.dart';
+import 'package:search_bar/main_search.dart';
+import 'package:search_bar/filter_list.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
+      //home: mainSearch(),
       home: filterlist(),
     );
   }

@@ -6,10 +6,9 @@ class filterlist extends StatefulWidget {
 }
 
 class _filterlistState extends State<filterlist> {
-
   bool isSearchClick = false;
+  String search = '';
   final TextEditingController _searchController = TextEditingController();
-  String searctText = '';
   List<String> items = [
     'America',
     'Russia',
@@ -21,33 +20,6 @@ class _filterlistState extends State<filterlist> {
     'France',
     'England'
   ];
-
-  List<String> filtereItems = [];
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    filtereItems = List.from(items);
-  }
-
-  void _onSearchChanged(String value) {
-    setState(() {
-      searctText = value;
-      myFilterItems();
-    });
-  }
-
-  void myFilterItems() {
-    if (searctText.isEmpty) {
-      filtereItems = List.from(items);
-    } else {
-      filtereItems = items
-          .where(
-              (items) => items.toLowerCase().contains(searctText.toLowerCase()))
-          .toList();
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +35,12 @@ class _filterlistState extends State<filterlist> {
                 ),
                 child: TextField(
                   controller: _searchController,
-                  onChanged: _onSearchChanged,
+                  onChanged: (String? value) {
+                    print(value);
+                    setState(() {
+                      search = value.toString();
+                    });
+                  },
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.fromLTRB(16, 20, 16, 12),
                     hintText: 'Search...',
@@ -83,7 +60,6 @@ class _filterlistState extends State<filterlist> {
                 isSearchClick = !isSearchClick;
                 if (!isSearchClick) {
                   _searchController.clear();
-                  myFilterItems();
                 }
               });
             },
@@ -92,11 +68,21 @@ class _filterlistState extends State<filterlist> {
         ],
       ),
       body: ListView.builder(
-          itemCount: filtereItems.length,
+          itemCount: items.length,
           itemBuilder: (context, index) {
-            return ListTile(
-              title: Text(filtereItems[index]),
-            );
+            if (_searchController.text.isEmpty) {
+              return ListTile(
+                title: Text(items[index]),
+              );
+            } else if (items[index]
+                .toLowerCase()
+                .contains(search.toLowerCase())) {
+              return ListTile(
+                title: Text(items[index]),
+              );
+            } else {
+              return Container();
+            }
           }),
     );
   }
