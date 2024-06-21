@@ -41,7 +41,31 @@ class _mainSearchState extends State<mainSearch> {
             itemCount: allData.length,
             itemBuilder: (_, index) {
               var item = allData[index];
-              return ListTile(title: Text(item.toString()));
+              return Column(
+                children: [
+                  ListTile(
+                    leading: Container(
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(color: Colors.blue, width: 2)),
+                      child: CircleAvatar(
+                        radius: 20,
+                        backgroundColor: Colors.red,
+                      ),
+                    ),
+                    //leading: Icon(Icons.person),
+                    iconColor: Colors.black,
+                    title: Text(
+                      item.toString(),
+                    ),
+                    subtitle: Text('This is a country name'),
+                    textColor: Colors.black,
+                    focusColor: Colors.red,
+                    tileColor: Colors.green,
+                  ),
+                  Divider(height: 10,)
+                ],
+              );
             }),
       ),
     );
@@ -95,6 +119,7 @@ class CustomSearch extends SearchDelegate {
                           DemoScreen(title: suggestion[index])));
                 },
                 child: ListTile(
+                  leading: Icon(Icons.person),
                   title: Text(suggestion[index].toString()),
                 ),
               );
