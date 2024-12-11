@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
-class mainSearch extends StatefulWidget {
-  const mainSearch({super.key});
+class SearchBoxPrime extends StatefulWidget {
+  const SearchBoxPrime({super.key});
 
   @override
-  State<mainSearch> createState() => _mainSearchState();
+  State<SearchBoxPrime> createState() => _SearchBoxPrimeState();
 }
 
-class _mainSearchState extends State<mainSearch> {
+class _SearchBoxPrimeState extends State<SearchBoxPrime> {
+
   List<String> allData = [
     'America',
     'Russia',
@@ -26,14 +27,14 @@ class _mainSearchState extends State<mainSearch> {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.blue,
-          title: Text('Flutter Search Bar'),
+          title: const Text('Flutter Search Bar'),
           actions: [
             IconButton(
               onPressed: () {
                 showSearch(
                     context: context, delegate: CustomSearch(allData: allData));
               },
-              icon: Icon(Icons.search),
+              icon: const Icon(Icons.search),
             )
           ],
         ),
@@ -48,22 +49,24 @@ class _mainSearchState extends State<mainSearch> {
                       decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(color: Colors.blue, width: 2)),
-                      child: CircleAvatar(
+                      child: const CircleAvatar(
+                        backgroundImage: AssetImage('assets/images/1.jpg'),
                         radius: 20,
-                        backgroundColor: Colors.red,
+                        //backgroundColor: Colors.red,
                       ),
                     ),
                     //leading: Icon(Icons.person),
+                    trailing: const Icon(Icons.menu),
                     iconColor: Colors.black,
                     title: Text(
                       item.toString(),
                     ),
-                    subtitle: Text('This is a country name'),
+                    subtitle: const Text('This is a country name'),
                     textColor: Colors.black,
                     focusColor: Colors.red,
                     tileColor: Colors.green,
                   ),
-                  Divider(height: 10,)
+                  const Divider(height: 10,)
                 ],
               );
             }),
@@ -84,7 +87,7 @@ class CustomSearch extends SearchDelegate {
           onPressed: () {
             query = '';
           },
-          icon: Icon(Icons.clear))
+          icon: const Icon(Icons.clear))
     ];
   }
 
@@ -94,41 +97,41 @@ class CustomSearch extends SearchDelegate {
         onPressed: () {
           close(context, null);
         },
-        icon: Icon(Icons.arrow_back));
+        icon: const Icon(Icons.arrow_back));
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
     if (query.isEmpty) {
-      return SizedBox();
+      return const SizedBox();
     }
     final List<String> suggestion = allData
         .where((element) => element.toLowerCase().contains(query.toLowerCase()))
         .toList();
     return suggestion.isEmpty
-        ? Center(
-            child: Text('Nothing found here'),
-          )
+        ? const Center(
+      child: Text('Nothing found here'),
+    )
         : ListView.builder(
-            itemCount: suggestion.length,
-            itemBuilder: (context, index) {
-              return GestureDetector(
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) =>
-                          DemoScreen(title: suggestion[index])));
-                },
-                child: ListTile(
-                  leading: Icon(Icons.person),
-                  title: Text(suggestion[index].toString()),
-                ),
-              );
-            });
+        itemCount: suggestion.length,
+        itemBuilder: (context, index) {
+          return GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) =>
+                      DemoScreen(title: suggestion[index])));
+            },
+            child: ListTile(
+              leading: const Icon(Icons.person),
+              title: Text(suggestion[index].toString()),
+            ),
+          );
+        });
   }
 
   @override
   Widget buildResults(BuildContext context) {
-    return SizedBox();
+    return const SizedBox();
   }
 }
 
