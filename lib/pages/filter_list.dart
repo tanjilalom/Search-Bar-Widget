@@ -105,7 +105,9 @@ class _filterlistState extends State<filterlist> {
                     focusColor: Colors.red,
                     tileColor: Colors.green,
                   ),
-                  Divider(height: 10,)
+                  Divider(
+                    height: 10,
+                  )
                 ],
               );
             } else if (items[index]
@@ -131,7 +133,9 @@ class _filterlistState extends State<filterlist> {
                     focusColor: Colors.red,
                     tileColor: Colors.green,
                   ),
-                  Divider(height: 10,)
+                  Divider(
+                    height: 10,
+                  )
                 ],
               );
             } else {

@@ -8,7 +8,6 @@ class SearchBoxPrime extends StatefulWidget {
 }
 
 class _SearchBoxPrimeState extends State<SearchBoxPrime> {
-
   List<String> allData = [
     'America',
     'Russia',
@@ -66,7 +65,9 @@ class _SearchBoxPrimeState extends State<SearchBoxPrime> {
                     focusColor: Colors.red,
                     tileColor: Colors.green,
                   ),
-                  const Divider(height: 10,)
+                  const Divider(
+                    height: 10,
+                  )
                 ],
               );
             }),
@@ -110,23 +111,23 @@ class CustomSearch extends SearchDelegate {
         .toList();
     return suggestion.isEmpty
         ? const Center(
-      child: Text('Nothing found here'),
-    )
+            child: Text('Nothing found here'),
+          )
         : ListView.builder(
-        itemCount: suggestion.length,
-        itemBuilder: (context, index) {
-          return GestureDetector(
-            onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) =>
-                      DemoScreen(title: suggestion[index])));
-            },
-            child: ListTile(
-              leading: const Icon(Icons.person),
-              title: Text(suggestion[index].toString()),
-            ),
-          );
-        });
+            itemCount: suggestion.length,
+            itemBuilder: (context, index) {
+              return GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) =>
+                          DemoScreen(title: suggestion[index])));
+                },
+                child: ListTile(
+                  leading: const Icon(Icons.person),
+                  title: Text(suggestion[index].toString()),
+                ),
+              );
+            });
   }
 
   @override

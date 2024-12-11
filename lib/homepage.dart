@@ -16,7 +16,8 @@ class Homepage extends StatelessWidget {
             ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const searchlistview()),
+                    MaterialPageRoute(
+                        builder: (context) => const searchlistview()),
                   );
                 },
                 child: const Text('Search Listview')),

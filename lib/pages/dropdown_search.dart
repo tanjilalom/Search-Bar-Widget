@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 class searchlistview extends StatefulWidget {
-  const searchlistview({super.key,});
-
+  const searchlistview({
+    super.key,
+  });
 
   @override
   State<searchlistview> createState() => _searchlistviewState();
 }
 
 class _searchlistviewState extends State<searchlistview> {
-
   String search = '';
   TextEditingController searchController = TextEditingController();
 
@@ -79,9 +79,11 @@ class _searchlistviewState extends State<searchlistview> {
                               leading: Container(
                                 decoration: BoxDecoration(
                                     shape: BoxShape.circle,
-                                    border: Border.all(color: Colors.blue, width: 2)),
+                                    border: Border.all(
+                                        color: Colors.blue, width: 2)),
                                 child: const CircleAvatar(
-                                  backgroundImage: AssetImage('assets/images/1.jpg'),
+                                  backgroundImage:
+                                      AssetImage('assets/images/1.jpg'),
                                   radius: 20,
                                   //backgroundColor: Colors.red,
                                 ),
@@ -94,19 +96,25 @@ class _searchlistviewState extends State<searchlistview> {
                               focusColor: Colors.red,
                               tileColor: Colors.green,
                             ),
-                            const Divider(height: 10,)
+                            const Divider(
+                              height: 10,
+                            )
                           ],
                         );
-                      } else if (items[index].toLowerCase().contains(search.toLowerCase())) {
+                      } else if (items[index]
+                          .toLowerCase()
+                          .contains(search.toLowerCase())) {
                         return Column(
                           children: [
                             ListTile(
                               leading: Container(
                                 decoration: BoxDecoration(
                                     shape: BoxShape.circle,
-                                    border: Border.all(color: Colors.blue, width: 2)),
+                                    border: Border.all(
+                                        color: Colors.blue, width: 2)),
                                 child: const CircleAvatar(
-                                  backgroundImage: AssetImage('assets/images/1.jpg'),
+                                  backgroundImage:
+                                      AssetImage('assets/images/1.jpg'),
                                   radius: 20,
                                   //backgroundColor: Colors.red,
                                 ),
@@ -119,7 +127,9 @@ class _searchlistviewState extends State<searchlistview> {
                               focusColor: Colors.red,
                               tileColor: Colors.green,
                             ),
-                            const Divider(height: 10,)
+                            const Divider(
+                              height: 10,
+                            )
                           ],
                         );
                       } else {
