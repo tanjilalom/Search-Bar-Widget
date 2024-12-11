@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:search_bar/dropdown_search.dart';
-import 'package:search_bar/main_search.dart';
-import 'package:search_bar/filter_list.dart';
+import 'package:search_bar/homepage.dart';
+import 'package:search_bar/pages/dropdown_search.dart';
+import 'package:search_bar/pages/main_search.dart';
+import 'package:search_bar/pages/filter_list.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,13 +20,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        //home: mainSearch(),
-        //home: filterlist(),
-        home: SearchBoxWidget(
-          isPrefixIcon: true,
-          icon: Icons.flag,
-          countries: ['India', 'Bangladesh', 'Nepal', 'Bhutan'],
-        ),
+        home: const Homepage(),
       ),
     );
   }
